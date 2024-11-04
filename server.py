@@ -1,7 +1,7 @@
 from multiprocessing import Process, Manager
 import time
 from transcriptor import Transcriptor
-from old.response_generator import Response_generator
+from response_generator import Response_generator
 from movement_recognition import Movement_recognition
 from tcp_communication import host, receive_file, send_file
 
@@ -56,7 +56,7 @@ def process_data(audio_queue, responses_queue):
                     question = tr.get_last_complete_sentence()
                     print('\n\tUser\'s question:\n', question)
 
-                    '''response = resp_gen.generate_response(question)
+                    response = resp_gen.generate_response(question)
                     print('\n\tModel\'s response:\n', response)
 
                     sentences, actions, references, similarities = mov_rec.detect_actions(response)
@@ -65,15 +65,15 @@ def process_data(audio_queue, responses_queue):
                         print('Action selected:', actions[index])
                         print('Because it\'s similar to:', references[index])
                         print('Similarity:', similarities[index])
-                        print()'''
+                        print()
 
                     response_file_path = 'temp/response.txt'
-                    '''with open(response_file_path, 'w') as file:
+                    with open(response_file_path, 'w') as file:
                         for index in range(len(sentences)):
                             file.write(actions[index])
                             file.write('\n')
                             file.write(sentences[index])
-                            file.write('\n')'''
+                            file.write('\n')
 
                     responses_queue.append(response_file_path)
 
