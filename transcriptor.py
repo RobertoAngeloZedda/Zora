@@ -95,6 +95,19 @@ class Transcriptor():
             new_audio = new_audio.astype(np.float32) / 32768.0
 
         return new_audio
+    
+    def open_file_new(self, file_path, data_type):
+        new_audio, _ = soundfile.read(file_path, dtype=data_type)
+
+        # convirting into mono
+        if len(new_audio.shape):
+            new_audio = np.mean(new_audio, axis=1, dtype=data_type)
+            #new_audio = new_audio[:, 0]
+
+        # converting file to the format required from the whisper model
+        new_audio = new_audio.astype(np.float32) / np.float32(np.iinfo(data_type).max+1)
+
+        return new_audio
 
     def update(self, file_path, sr=16000, debug=False):
         is_speech = self.is_speech(file_path=file_path, sr=sr)
@@ -180,3 +193,46 @@ class Transcriptor():
         if len(self.sentences) >= 2:
             return self.sentences[-2] 
         return ''
+
+if __name__ == '__main__':
+
+    import wave
+    def save_audio(audio, file_name):
+        audio = audio.tobytes()
+
+        with wave.open(file_name, 'wb') as wf:
+            wf.setnchannels(1)
+            wf.setsampwidth(4)
+            wf.setframerate(8000)
+            wf.writeframes(audio)
+
+    def open_file_new(file_path, data_type):
+        
+        new_audio, _ = soundfile.read(file_path, dtype=data_type)
+
+        # convirting into mono
+        if len(new_audio.shape) > 1:
+            #new_audio = np.mean(new_audio, axis=1, dtype=data_type)
+            new_audio = new_audio[:, 1]
+
+        # converting file to the format required from the whisper model
+        new_audio = new_audio.astype(np.float32) / 2147483647.0
+
+        return new_audio
+    
+    #print(np.iinfo(np.int32).max)
+    #exit()
+
+    audio = open_file_new('temp/stereo.wav', np.int32)
+    print(len(audio)/8000)
+
+    model = WhisperModel('base.en', device='cpu', compute_type='int8')
+
+    segments, _ = model.transcribe(audio, language='en', beam_size=3, word_timestamps=True, condition_on_previous_text=True)
+
+    transcription = []
+    for segment in segments:
+        for word in segment.words:
+            transcription.append(word.word)
+    
+    print(''.join(transcription))
