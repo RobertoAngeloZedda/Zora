@@ -5,13 +5,12 @@ MIN_SIMILARITY = 0.45
 
 actions_dict = {
     "Hello":		["Hello!", "Hi!", "Good morning!", "Good afternoon!", "Good evening!", "Goodbye!", "See you!", "See you later!", "Take care!", "Welcome!", "Hi there!", "Bye!", "Bye-bye!", "Catch you later!", "Farewell!", "Have a good day!", "Have a good night!", "What's up?", "Howdy!", "Cheers!", "Nice to see you!", "Until next time!", "Peace out!", "So long!", "Safe travels!"],
-    "Formal Greet":	["Sir!", "Ma'am!", "Attention!", "At ease!", "Yes, sir!", "Yes, ma'am!", "Reporting for duty!", "Present arms!", "Salute!", "Officer on deck!", "Permission to speak, sir!", "Permission to speak, ma'am!", "Dismissed!", "Aye, aye, sir!", "Aye, aye, ma'am!", "Ready, sir!", "Ready, ma'am!", "Captain!", "Commander!", "General!", "Major!", "Lieutenant!", "Sergeant!", "Corporal!", "Private!"],
     "Yes":			["Ok", "Yes", "Yeah", "Yep", "Yup", "Sure", "Absolutely", "Certainly", "Definitely", "Of course", "Indeed", "Affirmative", "Roger that", "For sure", "Totally", "You bet", "Right", "Alright"],
     "No":			["No", "Nope", "Nah", "Not at all", "Absolutely not", "Certainly not", "Definitely not", "No way", "Not really", "I don’t think so", "Negative", "No chance", "By no means", "Never", "No sir", "No ma'am", "Not on your life", "Not in a million years", "Out of the question", "Not happening", "Not possible", "No can do", "Nay", "I refuse"],
-    "Pensare":      ["Think", "Reflect", "Ponder", "Consider", "Contemplate", "Muse", "Deliberate", "Meditate", "Wonder", "Speculate", "Imagine", "Mull over", "Ruminate", "Analyze", "Envision", "Dream"],
-    "Incertezza":	["Maybe", "Perhaps", "Not sure", "I don't know", "Unsure", "Possibly", "Could be", "Not certain", "Not clear", "It's unclear", "Can't say", "I guess", "I suppose", "Not positive", "Up in the air", "Doubtful", "Questionable", "Ambiguous", "Indecisive", "On the fence"],
-    "Gioia": 		["Applause", "Thumbs up", "Yay!", "Woohoo!", "Hooray!", "Bravo!", "Great job!", "Well done!", "Fantastic!", "Awesome!", "Excellent!", "Terrific!", "Amazing!", "Superb!", "Wonderful!", "Outstanding!", "Marvelous!", "Splendid!", "Kudos!", "High five!"],
-    "Tristezza":    ["I am Sorry", "I am Sad", "I am unhappy", "I am heartbroken", "I am miserable", "I am sorrowful", "I am tearful", "I beg your pardon", "I am depressed"]
+    "I dont know":	["Maybe", "Perhaps", "Not sure", "I don't know", "Unsure", "Possibly", "Could be", "Not certain", "Not clear", "It's unclear", "Can't say", "I guess", "I suppose", "Not positive", "Up in the air", "Doubtful", "Questionable", "Ambiguous", "Indecisive", "On the fence"],
+    "Think":        ["Think", "Reflect", "Ponder", "Consider", "Contemplate", "Muse", "Deliberate", "Meditate", "Wonder", "Speculate", "Imagine", "Mull over", "Ruminate", "Analyze", "Envision", "Dream"],
+    "Happy": 		["Applause", "Thumbs up", "Yay!", "Woohoo!", "Hooray!", "Bravo!", "Great job!", "Well done!", "Fantastic!", "Awesome!", "Excellent!", "Terrific!", "Amazing!", "Superb!", "Wonderful!", "Outstanding!", "Marvelous!", "Splendid!", "Kudos!", "High five!"],
+    "Sad":          ["I am Sorry", "I am Sad", "I am unhappy", "I am heartbroken", "I am miserable", "I am sorrowful", "I am tearful", "I beg your pardon", "I am depressed"]
 }
 
 class Movement_recognition:
@@ -68,7 +67,7 @@ class Movement_recognition:
 
 if __name__ == '__main__':
 
-    text = 'Hi! Of course I can! A neural network is a computer system modeled after the human brain that is designed to recognize patterns. It is composed of layers of interconnected nodes, called neurons, that process and transmit information. Each connection between neurons has a weight that determines the strength of the connection. Through a process called training, the neural network is able to learn from data and adjust the weights of the connections to improve its ability to make predictions or recognize patterns. Neural networks are commonly used in tasks such as image and speech recognition, natural language processing, and autonomous vehicles.'
+    text = 'Hi! Of course I can! I\'m not really sure, but I\'ll try my best! A neural network is a computer system modeled after the human brain that is designed to recognize patterns. It is composed of layers of interconnected nodes, called neurons, that process and transmit information. Each connection between neurons has a weight that determines the strength of the connection.'
 
     mov_rec = Movement_recognition()
 
